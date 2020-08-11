@@ -1,7 +1,7 @@
 package com.learnings.threesixty.webservices;
 
+import java.util.Date;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,19 +16,25 @@ public class UserDetailsWebservices {
 	@Autowired
 	private UserRepository userRepository;
 	
+//	@GetMapping(path="/user/{id}")
+//	public Optional<User> retriveUser(@PathVariable String id){
+//		
+//		Optional<User> optionalUser = userRepository.findById(id);
+//		
+//		return optionalUser;
+//	} 
 	@GetMapping(path="/user/{id}")
-	public Optional<User> retriveUser(@PathVariable String id){
+	public User retriveUser(@PathVariable String id){
 		
-		Optional<User> optionalUser = userRepository.findById(id);
 		
-		return optionalUser;
+		return new User("9","Ajit",new Date(),"male","arpit.jain@gmail.com");
 	} 
 	
-	@PostMapping(path="/saveuser")
-	public List<User> saveUser(@RequestBody User user){
-		userRepository.save(user);
-		
-		return userRepository.findAll();
-	} 
+//	@PostMapping(path="/saveuser")
+//	public List<User> saveUser(@RequestBody User user){
+//		userRepository.save(user);
+//		
+//		return userRepository.findAll();
+//	} 
 
 }
